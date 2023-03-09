@@ -1,4 +1,4 @@
-import { Stack } from '@chakra-ui/react'
+import { Box, Stack, Text } from '@chakra-ui/react'
 import React, { FC, ReactNode } from 'react'
 
 interface IProps {

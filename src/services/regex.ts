@@ -1,3 +1,5 @@
+import { Item } from "@/types";
+
 export default function processInputWithRegex(text: string) {
   
   const regex = /^(\d+(?:\.\d+)?)\s*(?:(kg|g)\s*)?(.*)/i;
@@ -21,6 +23,5 @@ export default function processInputWithRegex(text: string) {
     quantity,
     unit,
     name,
-    isChecked: false
-  };
+  } as Item;
 } 

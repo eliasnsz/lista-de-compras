@@ -1,6 +1,7 @@
 import processInputWithRegex from '@/services/regex'
 import { Item } from '@/types'
 import { Container, Heading, Input, Stack } from '@chakra-ui/react'
+import moment from 'moment'
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
 import DefaultContainer from './components/DefaultContainer'
@@ -28,7 +29,16 @@ export default function Home() {
   const handleSubmit = () => {
     if(!isAllMatch) return
 
-    setItems([...items, processInputWithRegex(text) as Item])
+    const { name, quantity, unit } = processInputWithRegex(text)
+    const newItem = { 
+      name, 
+      unit: unit, 
+      quantity: quantity,
+      created_at: moment().toISOString()
+    } as Item
+
+    setItems([ ...items, newItem ])
+    console.log(newItem);
     
   }
 
@@ -46,11 +56,11 @@ export default function Home() {
           {
             items.map((item, index) => {
               return (
-                <Message key={index}>
-                  {`${item.quantity}${item.unit} ${item.name}`}                  
+                <Message created_at={item.created_at} key={index}>
+                  {`${item.quantity}${item.unit !== "un" ? item.unit : ""} ${item.name}`}                  
                 </Message>
               )
-            })
+            }).reverse()
           }
         </MessageContainer>
         <MessageInput 

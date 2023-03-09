@@ -3,4 +3,5 @@ export interface Item {
   quantity: number;
   unit: "un" | "kg" | "g";
   isChecked: boolean;
+  created_at: string;
 }
