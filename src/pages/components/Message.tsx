@@ -5,7 +5,7 @@ interface IProps {
   children: ReactNode
 }
 
-export const Message:FC<IProps> = ({ children }) => {
+const Message:FC<IProps> = ({ children }) => {
   return (
     <Box 
       py={1}
@@ -21,3 +21,5 @@ export const Message:FC<IProps> = ({ children }) => {
     </Box>
   )
 }
+
+export default Message

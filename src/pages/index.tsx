@@ -3,11 +3,11 @@ import { Item } from '@/types'
 import { Container, Heading, Input, Stack } from '@chakra-ui/react'
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
-import { DefaultContainer } from './components/DefaultContainer'
-import { Header } from './components/Header'
-import { Message } from './components/Message'
-import { MessageContainer } from './components/MessageContainer'
-import { MessageInput } from './components/MessageInput'
+import DefaultContainer from './components/DefaultContainer'
+import Header from './components/Header'
+import Message from './components/Message'
+import MessageContainer from './components/MessageContainer'
+import MessageInput from './components/MessageInput'
 
 export default function Home() {
 

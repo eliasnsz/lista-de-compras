@@ -10,7 +10,7 @@ interface IProps {
   handleSubmit: () => void
 }
 
-export const MessageInput:FC<IProps> = ({ setText, text, isAllMatch, handleSubmit }) => {
+const MessageInput:FC<IProps> = ({ setText, text, isAllMatch, handleSubmit }) => {
 
   return (
     <Center 
@@ -63,3 +63,5 @@ export const MessageInput:FC<IProps> = ({ setText, text, isAllMatch, handleSubmi
     </Center>
   )
 }
+
+export default MessageInput

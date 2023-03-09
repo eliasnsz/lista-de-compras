@@ -5,7 +5,7 @@ interface IProps {
   children: ReactNode
 }
 
-export const DefaultContainer:FC<IProps> = ({ children }) => {
+const DefaultContainer:FC<IProps> = ({ children }) => {
   return (
     <Stack 
       pb={4}
@@ -23,3 +23,5 @@ export const DefaultContainer:FC<IProps> = ({ children }) => {
     </Stack>
   )
 }
+
+export default DefaultContainer

@@ -5,7 +5,7 @@ interface IProps {
   children: ReactNode
 }
 
-export const MessageContainer:FC<IProps> = ({ children }) => {
+const MessageContainer:FC<IProps> = ({ children }) => {
   return (
     <Stack 
       px={2}
@@ -18,3 +18,5 @@ export const MessageContainer:FC<IProps> = ({ children }) => {
     </Stack>
   )
 }
+
+export default MessageContainer

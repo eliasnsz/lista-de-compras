@@ -5,7 +5,7 @@ import { BiDotsVerticalRounded } from "react-icons/bi"
 interface IProps {}
 
 
-export const Header:FC<IProps> = (props) => {
+const Header:FC<IProps> = (props) => {
   return (
     <Stack 
       px={4}
@@ -46,3 +46,5 @@ export const Header:FC<IProps> = (props) => {
     </Stack>
   )
 }
+
+export default Header
