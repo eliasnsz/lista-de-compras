@@ -12,8 +12,6 @@ interface IProps {
 
 const MessageInput:FC<IProps> = ({ setText, text, isAllMatch, handleSubmit }) => {
 
-  const inputRef = useRef(null)
-
   return (
     <form onSubmit={handleSubmit}>
       <Center

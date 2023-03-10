@@ -15,6 +15,8 @@ import { log } from 'console'
 
 export default function Home() {
 
+  const [idList, setIdList] = useState<string[]>([])
+
   const [text, setText] = useState("")
   const [isAllMatch, setIsAllMatch] = useState(false)
 
@@ -64,18 +66,15 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <DefaultContainer>
-        <Header/>
-        <MessageContainer>
-          {
-            items?.map((item, index) => {
-              return (
-                <Message created_at={item.created_at} key={index}>
-                  {`${item.quantity}${item.unit !== "un" ? item.unit : ""} ${item.name}`}                  
-                </Message>
-              )
-            }).reverse()
-          }
-        </MessageContainer>
+        <Header
+          idList={idList}
+          setIdList={setIdList}
+        />
+        <MessageContainer 
+          items={items}
+          idList={idList}
+          setIdList={setIdList}
+        />
         <MessageInput 
           text={text}
           setText={setText} 

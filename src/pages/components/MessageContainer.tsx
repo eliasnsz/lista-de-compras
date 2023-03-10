@@ -1,15 +1,20 @@
+import { Item } from '@/types'
 import { Box, Button, IconButton, Stack, Text } from '@chakra-ui/react'
-import React, { FC, ReactNode, RefObject, useRef, useState } from 'react'
+import React, { Dispatch, FC, ReactNode, RefObject, useRef, useState } from 'react'
 import { HiChevronDoubleDown } from "react-icons/hi"
+import Message from './Message'
 
 interface IProps {
-  children: ReactNode
+  idList: string[]
+  items: Item[] | undefined
+  setIdList: Dispatch<React.SetStateAction<string[]>>
 }
 
-const MessageContainer:FC<IProps> = ({ children }) => {
+const MessageContainer:FC<IProps> = ({ items, idList, setIdList }) => {
   
   const containerRef = useRef<HTMLDivElement>(null)
   const [isVisibleButton, setVisibleButton] = useState(false)
+  
   
   const handleScroll = (event: any) => {
     const distanceToTop = Math.abs(event.target.scrollTop as number)
@@ -25,6 +30,10 @@ const MessageContainer:FC<IProps> = ({ children }) => {
       containerRef.current.scrollTop = 0
     }
   }  
+
+  console.log(idList);
+  
+  
   return (
     <>
       <Stack 
@@ -43,8 +52,21 @@ const MessageContainer:FC<IProps> = ({ children }) => {
           }
         }}  
       > 
-        {children}
-
+        {
+            items?.map((item, index) => {
+              return (
+                <Message 
+                  key={index}
+                  id={item._id} 
+                  idList={idList}
+                  setIdList={setIdList}
+                  created_at={item.created_at} 
+                >
+                  {`${item.quantity}${item.unit !== "un" ? item.unit : ""} ${item.name}`}                  
+                </Message>
+              )
+            }).reverse()
+          }
       { isVisibleButton &&
         (<Box w="100%" pb={8} pos="absolute" display="flex" justifyContent="end" px={5}>
           <IconButton
