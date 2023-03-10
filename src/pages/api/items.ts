@@ -1,7 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 import models from '@/models'
-import { Item } from '@/types'
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 
@@ -23,8 +22,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   if (req.method === 'DELETE') {
-    const { id }: { id: string } = req.body
-    await models.deleteOneItem(id)
+    const { ids }: { ids: string[] } = req.body
+    await models.deleteManyItems(ids)
     return res.status(204).end();
   }
   

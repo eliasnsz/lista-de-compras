@@ -3,6 +3,8 @@ import React, { Dispatch, FC } from 'react'
 import { BiDotsVerticalRounded } from "react-icons/bi"
 import { AiOutlineArrowLeft } from "react-icons/ai"
 import { FaTrash } from "react-icons/fa"
+import api from '@/services/api'
+import { useQueryClient } from 'react-query'
 
 interface IProps {
   idList: string[]
@@ -10,8 +12,16 @@ interface IProps {
 }
 
 
-const Header:FC<IProps> = ({ idList, setIdList }) => {
-  if (idList.length) {
+const Header:FC<IProps> = ({ idList: ids, setIdList }) => {
+
+  const queryClient = useQueryClient()
+  
+  const handleDelete = async () => {
+    await api.delete("/items", { data: ids })
+    queryClient.invalidateQueries("items")
+  }
+  
+  if (ids.length) {
     return (
       <Stack 
         px={4}
@@ -40,7 +50,7 @@ const Header:FC<IProps> = ({ idList, setIdList }) => {
           <Text
             color="#fff"
           >
-            {idList.length}
+            {ids.length}
           </Text>
         </Stack>
         <Icon 
@@ -48,6 +58,7 @@ const Header:FC<IProps> = ({ idList, setIdList }) => {
           color="#fff"
           as={FaTrash}
           transition=".2s ease"
+          onClick={handleDelete}
           _hover={{ cursor: "pointer", color: "#bababa" }}
         />
       </Stack>

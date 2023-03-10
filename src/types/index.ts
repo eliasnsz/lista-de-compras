@@ -1,7 +1,7 @@
 import { ObjectId } from "mongodb";
 
 export interface Item {
-  _id: string;
+  _id: ObjectId;
   name: string;
   quantity: number;
   unit: "un" | "kg" | "g";

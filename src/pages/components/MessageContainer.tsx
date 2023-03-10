@@ -57,7 +57,7 @@ const MessageContainer:FC<IProps> = ({ items, idList, setIdList }) => {
               return (
                 <Message 
                   key={index}
-                  id={item._id} 
+                  id={item._id.toString() as string} 
                   idList={idList}
                   setIdList={setIdList}
                   created_at={item.created_at} 
