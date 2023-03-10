@@ -1,6 +1,6 @@
   import { Box, Icon, Stack, Text } from '@chakra-ui/react'
   import moment from 'moment'
-  import React, { Dispatch, FC, MouseEvent, MouseEventHandler, ReactNode, RefObject, SetStateAction, useEffect, useRef, useState } from 'react'
+  import React, { Dispatch, FC, MouseEvent, MouseEventHandler, ReactNode, RefObject, SetStateAction, TouchEventHandler, useEffect, useRef, useState } from 'react'
   import { BsCheckAll } from "react-icons/bs"
 
   interface IProps {
@@ -18,7 +18,7 @@
     const timeoutRef = useRef<number | null>(null);
     const isSelected = idList?.includes(id)
 
-    const handleMouseDown = (e: MouseEvent) => {
+    const handleMouseDown = (e: any) => {
       if (idList?.length) {
         if (isSelected) {
           setIdList(state =>[...state.filter(state_id => state_id !== id)])
@@ -51,6 +51,8 @@
         pos="relative"
         onMouseUp={handleMouseUp}
         onMouseDown={handleMouseDown}
+        onTouchStart={handleMouseDown}
+        onTouchEnd={handleMouseUp}
       >
         <Box
           py={1}
