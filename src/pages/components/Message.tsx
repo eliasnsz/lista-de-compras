@@ -49,8 +49,8 @@
       <Stack
         w="100%"
         pos="relative"
-        onMouseDown={handleMouseDown}
         onMouseUp={handleMouseUp}
+        onMouseDown={handleMouseDown}
       >
         <Box
           py={1}
@@ -76,15 +76,13 @@
             <Icon boxSize={5} color="#a9a9a9" alignSelf="flex-end" as={BsCheckAll}/>
           </Stack>
         </Box>
-        { isSelected &&
-          (<Box
-            h="100%"
-            w="100%"
-            bottom={0}
-            pos="absolute"
-            bg="#34B7F144"
-          />)
-        }
+        (<Box
+          h="100%"
+          w="100%"
+          bottom={0}
+          pos="absolute"
+          bg={isSelected ? "#34B7F144" : "transparent"}
+        />)
       </Stack>
     )
   }
