@@ -12,7 +12,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   
   if (req.method === 'POST') {
     const { item } = req.body 
-    console.log(item)
     await models.insertOneItem(item)
     return res.status(201).end();
   }

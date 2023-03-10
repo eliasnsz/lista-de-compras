@@ -1,4 +1,4 @@
-import { FormEvent, useEffect, useState } from 'react'
+import { FormEvent, FormHTMLAttributes, useEffect, useState } from 'react'
 import { useQuery, useQueryClient } from 'react-query'
 import { Item } from '@/types'
 
@@ -38,10 +38,11 @@ export default function Home() {
     }
   }, [text])
 
-  const handleSubmit = async (e: FormEvent) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault()
     if(!isAllMatch) return
-
+    const input = e.target[0] as HTMLInputElement
+    
     const { name, quantity, unit } = processInputWithRegex(text)
     const created_at = moment().toISOString()
     
@@ -49,8 +50,9 @@ export default function Home() {
     
     await api.post("/items", { item: newItem })
     queryClient.invalidateQueries("items")
-
+    
     setText("")
+    input.focus()
   }
 
   return (

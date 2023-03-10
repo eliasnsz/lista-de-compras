@@ -1,5 +1,5 @@
-import { Box, Button, Center, Icon, IconButton, Input, Stack } from '@chakra-ui/react'
-import React, { Dispatch, FC, FormEvent, SetStateAction } from 'react'
+import { Box, Button, Center, ComponentWithAs, Icon, IconButton, Input, InputProps, Stack } from '@chakra-ui/react'
+import React, { Dispatch, FC, FormEvent, SetStateAction, useRef } from 'react'
 import { IoSendSharp } from 'react-icons/io5'
 import { MdEmojiEmotions } from 'react-icons/md'
  
@@ -11,6 +11,8 @@ interface IProps {
 }
 
 const MessageInput:FC<IProps> = ({ setText, text, isAllMatch, handleSubmit }) => {
+
+  const inputRef = useRef(null)
 
   return (
     <form onSubmit={handleSubmit}>
