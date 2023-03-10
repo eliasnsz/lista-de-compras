@@ -62,6 +62,7 @@
           borderRadius="xl"
           alignSelf="flex-end"
           pointerEvents="none"
+          style={{ touchAction: "none" }}
         >
           <Stack spacing={0} direction="row" justify="flex-end">
             <Box textAlign="left">{children}</Box>
