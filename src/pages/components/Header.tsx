@@ -10,12 +10,13 @@ const Header:FC<IProps> = (props) => {
     <Stack 
       px={4}
       w="100%" 
+      zIndex={2}
       h="75px"
       bg="#202020" 
       align="center"
       direction="row"
       justify="space-between"
-      boxShadow="0px 5px 10px #00000055"
+      boxShadow="0px 5px 10px #00000044"
     >
       <Stack
         spacing={4}

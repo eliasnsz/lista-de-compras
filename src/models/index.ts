@@ -1,11 +1,11 @@
 import { getAllItems } from "./getAllItems";
-import { insertManyItems } from "./insertManyItems";
+import { insertOneItem } from "./insertOneItem";
 import { updateOneItem } from "./updateOneItem";
 import { deleteOneItem } from "./deleteOneItem";
 
 const models = {
   getAllItems,
-  insertManyItems,
+  insertOneItem,
   updateOneItem,
   deleteOneItem
 }

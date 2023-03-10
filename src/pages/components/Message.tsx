@@ -29,7 +29,7 @@ const Message:FC<IProps> = ({ children, created_at }) => {
           fontSize="xs" 
           alignSelf="flex-end"
         >
-          {moment(created_at).format("HH:MM")}
+          {moment(created_at).format("HH:mm")}
         </Text>
         <Icon boxSize={5} color="#a9a9a9" alignSelf="flex-end" as={BsCheckAll}/>
       </Stack>

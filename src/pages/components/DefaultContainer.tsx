@@ -12,9 +12,10 @@ const DefaultContainer:FC<IProps> = ({ children }) => {
       m="auto"
       h="100vh"
       maxW="2xl" 
-      justify="space-between"
+      spacing={0}
       bgAttachment="fixed"
       backgroundSize="cover"
+      justify="space-between"
       backgroundPosition="center"
       backgroundAttachment="local"
       backgroundImage="url('wallpaper.jpg')"
