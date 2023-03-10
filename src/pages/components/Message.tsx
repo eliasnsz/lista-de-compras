@@ -27,7 +27,7 @@
 
         setIdList(state => [...state, id])
         return
-      } 
+      }   
 
       setIsPressed(true);
       timeoutRef.current = window.setTimeout(() => {
@@ -49,10 +49,8 @@
       <Stack
         w="100%"
         pos="relative"
-        onMouseUp={handleMouseUp}
-        onMouseDown={handleMouseDown}
-        onTouchStart={handleMouseDown}
-        onTouchEnd={handleMouseUp}
+        onPointerUp={handleMouseUp}
+        onPointerDown={handleMouseDown}
       >
         <Box
           py={1}
