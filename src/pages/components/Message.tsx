@@ -16,7 +16,7 @@
 
     const [isPressed, setIsPressed] = useState(false);
     const timeoutRef = useRef<number | null>(null);
-    const isSelected = idList.includes(id)
+    const isSelected = idList?.includes(id)
 
     const handleMouseDown = (e: MouseEvent) => {
       if (idList?.length) {
