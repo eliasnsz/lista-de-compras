@@ -21,7 +21,7 @@ const Header:FC<IProps> = ({ idList: ids, setIdList }) => {
     queryClient.invalidateQueries("items")
   }
   
-  if (ids.length) {
+  if (ids?.length) {
     return (
       <Stack 
         px={4}

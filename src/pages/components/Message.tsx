@@ -19,7 +19,7 @@
     const isSelected = idList.includes(id)
 
     const handleMouseDown = (e: MouseEvent) => {
-      if (idList.length) {
+      if (idList?.length) {
         if (isSelected) {
           setIdList(state =>[...state.filter(state_id => state_id !== id)])
           return
@@ -36,7 +36,7 @@
     }
 
     const handleMouseUp = () => {
-      if (!idList.length) {
+      if (!idList?.length) {
         setIsPressed(false);
         if (timeoutRef.current) {
           window.clearTimeout(timeoutRef.current);
