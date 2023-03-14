@@ -4,7 +4,7 @@ import DefaultContainer from './DefaultContainer'
 
 interface IProps {}
 
-export const LoadingScreen:FC<IProps> = (props) => {
+const LoadingScreen:FC<IProps> = (props) => {
 
   const [opacity, setOpacity] = useState(0)
 
@@ -33,3 +33,5 @@ export const LoadingScreen:FC<IProps> = (props) => {
     </DefaultContainer>
   )
 }
+
+export default LoadingScreen

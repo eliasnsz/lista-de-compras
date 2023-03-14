@@ -9,7 +9,7 @@ interface IProps {
   page: string
 }
 
-export const DotsMenu:FC<IProps> = ({ page }) => {
+const DotsMenu:FC<IProps> = ({ page }) => {
 
   const queryClient = useQueryClient()
   
@@ -55,3 +55,5 @@ export const DotsMenu:FC<IProps> = ({ page }) => {
     </Menu>
   )
 }
+
+export default DotsMenu

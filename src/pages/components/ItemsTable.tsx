@@ -1,14 +1,14 @@
 import { TableContainer, Table, TableCaption, Thead, Tr, Th, Tbody, Td, Tfoot, Checkbox } from '@chakra-ui/react'
 import { useQueryClient, useQuery } from 'react-query'
+import { Item } from '@/types'
 import { FC } from 'react'
 
+import ItemsTableRow from './ItemsTableRow'
 import api from '@/services/api'
-import { Item } from '@/types'
-import { ItemsTableRow } from './ItemsTableRow'
 
 interface IProps {}
 
-export const ItemsTable:FC<IProps> = (props) => {
+const ItemsTable:FC<IProps> = (props) => {
   
   const queryClient = useQueryClient()
   
@@ -41,3 +41,5 @@ export const ItemsTable:FC<IProps> = (props) => {
     </TableContainer>
   )
 }
+
+export default ItemsTable

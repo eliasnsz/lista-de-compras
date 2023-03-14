@@ -8,7 +8,7 @@ interface IProps {
   item: Item
 }
 
-export const ItemsTableRow:FC<IProps> = ({ item }) => {
+const ItemsTableRow:FC<IProps> = ({ item }) => {
 
   const [isChecked, setIsChecked] = useState(item?.isChecked)
 
@@ -38,3 +38,5 @@ export const ItemsTableRow:FC<IProps> = ({ item }) => {
     </Tr>
   )
 }
+
+export default ItemsTableRow
