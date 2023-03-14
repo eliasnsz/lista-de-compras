@@ -1,5 +1,6 @@
-import { Center, Image, Slide } from '@chakra-ui/react'
-import React, { FC, useEffect, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
+import { Center, Image } from '@chakra-ui/react'
+
 import DefaultContainer from './DefaultContainer'
 
 interface IProps {}

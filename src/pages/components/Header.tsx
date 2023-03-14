@@ -1,11 +1,6 @@
-import { Avatar, Box, Icon, IconButton, Stack, Text } from '@chakra-ui/react'
-import React, { Dispatch, FC } from 'react'
-import { BiDotsVerticalRounded } from "react-icons/bi"
-import { AiOutlineArrowLeft } from "react-icons/ai"
-import { FaTrash } from "react-icons/fa"
-import api from '@/services/api'
-import { useQueryClient } from 'react-query'
-import { DotsMenu } from './DotsMenu'
+import { Avatar, Box, Stack, Text } from '@chakra-ui/react'
+import { FC } from 'react'
+import DotsMenu from './DotsMenu'
 
 interface IProps {
   page: string

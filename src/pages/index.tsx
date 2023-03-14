@@ -1,19 +1,15 @@
-import { FormEvent, FormHTMLAttributes, useEffect, useState } from 'react'
 import { useQuery, useQueryClient } from 'react-query'
+import { useEffect, useState } from 'react'
 import { Item } from '@/types'
 
 import processInputWithRegex from '@/services/regex'
 import DefaultContainer from './components/DefaultContainer'
 import MessageContainer from './components/MessageContainer'
+import LoadingScreen from './components/LoadingScreen'
 import MessageInput from './components/MessageInput'
-import Message from './components/Message'
 import moment from 'moment'
 import Header from './components/Header'
-import Head from 'next/head'
 import api from '@/services/api'
-import { log } from 'console'
-import { Box, Center, Image, Spinner } from '@chakra-ui/react'
-import { LoadingScreen } from './components/LoadingScreen'
 
 export default function Home() {
   
