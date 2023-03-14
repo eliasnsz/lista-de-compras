@@ -41,7 +41,7 @@ const Header:FC<IProps> = ({ page }) => {
           Lista de compras
         </Text>
       </Stack>
-      <DotsMenu page={page}/>
+      <DotsMenu page={page as "main" | "checklist"}/>
     </Stack>
   )
 }
