@@ -1,4 +1,4 @@
-import { TableContainer, Table, TableCaption, Thead, Tr, Th, Tbody, Td, Tfoot, Checkbox } from '@chakra-ui/react'
+import { TableContainer, Table, TableCaption, Thead, Tr, Th, Tbody, Td, Tfoot, Checkbox, Text, Center } from '@chakra-ui/react'
 import { useQueryClient, useQuery } from 'react-query'
 import { Item } from '@/types'
 import { FC, useState } from 'react'
@@ -17,6 +17,14 @@ const ItemsTable:FC<IProps> = (props) => {
     staleTime: 1000 * 60, // 60s
     refetchOnWindowFocus: false
   })
+
+  if (!items?.length) {
+    return (
+      <Center w="100%" h="100%">
+        <Text color="#9a9a9a">Nenhum item encontrado</Text>
+      </Center>
+    )
+  }
   
   return (
     <TableContainer backdropFilter="blur(2px)" h="100%" color="#fff" px={2}>

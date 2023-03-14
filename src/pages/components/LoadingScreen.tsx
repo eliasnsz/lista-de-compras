@@ -20,13 +20,13 @@ const LoadingScreen:FC<IProps> = (props) => {
       <Center
         w="100%"
         h="100%"
-        bgImage="linear-gradient(to bottom, #292929 30%, #090909)" 
+        bgColor="#292929"
       >
         <Image
-          w="150px"
+          w="100px"
           opacity={opacity}
           transition="1s ease"
-          transform={opacity ? "translateY(0px)" : "translateY(200px)"}
+          transform={opacity ? "translateY(-20px)" : "translateY(200px)"}
           alt="loading-logo"
           src="/loading-logo.png" 
         />  

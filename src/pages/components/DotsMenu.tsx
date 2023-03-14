@@ -6,7 +6,7 @@ import { BiDotsVerticalRounded } from 'react-icons/bi'
 import { useQueryClient } from 'react-query'
 
 interface IProps {
-  page: string
+  page: "main" | "checklist"
 }
 
 const DotsMenu:FC<IProps> = ({ page }) => {
@@ -47,11 +47,11 @@ const DotsMenu:FC<IProps> = ({ page }) => {
           border="none" 
           bg="transparent" 
           onClick={handleDelete}
-          _hover={{ bgColor: "#363636"}}
+          _hover={{ bgColor: "#363636" }}
         >
-          Limpar lista
+          { page === "main" ? "Limpar lista" : "Concluir checagem"}
         </MenuItem>
-      </MenuList>
+      </MenuList> 
     </Menu>
   )
 }
