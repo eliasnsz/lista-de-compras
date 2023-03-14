@@ -1,16 +1,14 @@
 import { TableContainer, Table, TableCaption, Thead, Tr, Th, Tbody, Td, Tfoot, Checkbox } from '@chakra-ui/react'
 import { useQueryClient, useQuery } from 'react-query'
 import { Item } from '@/types'
-import { FC } from 'react'
+import { FC, useState } from 'react'
 
-import ItemsTableRow from './ItemsTableRow'
+// import ItemsTableRow from './ItemsTableRow'
 import api from '@/services/api'
 
 interface IProps {}
 
 const ItemsTable:FC<IProps> = (props) => {
-  
-  const queryClient = useQueryClient()
   
   const { data: items, isLoading } = useQuery<Item[]>("items", async () => {
     const response = await api.get("/items")
@@ -27,10 +25,10 @@ const ItemsTable:FC<IProps> = (props) => {
           <Tr>
             <Th>Qnt</Th>
             <Th>Produto</Th>
-            <Th></Th>
+            <Th>Checagem</Th>
           </Tr>
         </Thead>
-        <Tbody w="100px">
+        <Tbody>
           {
             items?.map((item, index) => {
               return <ItemsTableRow key={index} item={item}/>
@@ -39,6 +37,37 @@ const ItemsTable:FC<IProps> = (props) => {
         </Tbody>
       </Table>
     </TableContainer>
+  )
+}
+
+function ItemsTableRow({ item }: { item: Item}) {
+
+  const [isChecked, setIsChecked] = useState(item?.isChecked)
+
+  const queryClient = useQueryClient()
+
+  const handleToggleCheck = async () => {
+    await api.put("/items", { id: item?._id.toString() })
+    queryClient.invalidateQueries("items")
+  }
+  
+  return (
+    <Tr 
+      transition=".2s ease"
+      bgColor={ isChecked ? "green.500" : "transparent" }
+      onClick={() => {setIsChecked(state => !state), handleToggleCheck()}}
+    >
+      <Td>{item?.quantity} {item?.unit !== "un" && item?.unit}</Td>
+      <Td>{item?.name}</Td>
+      <Td isNumeric>
+        <Checkbox 
+          size="lg" 
+          colorScheme="green" 
+          isChecked={isChecked}
+          onChange={() => {setIsChecked(state => !state), handleToggleCheck()}}
+        />
+      </Td>
+    </Tr>
   )
 }
 
