@@ -22,10 +22,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   if (req.method === 'DELETE') {
-    const { ids }: { ids: string[] } = req.body
-    await models.deleteManyItems(ids)
+    await models.deleteAllItems()
     return res.status(204).end();
   }
-  
+
 }
 

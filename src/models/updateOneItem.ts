@@ -7,8 +7,7 @@ export const updateOneItem = async (id: string) => {
   const itemsCollection = db.collection<Item>("items");
 
   const filter = { _id: new ObjectId(id) }
-  const update = { $set: { isChecked: true } }
 
-  await itemsCollection.findOneAndUpdate(filter, update);
+  await itemsCollection.findOneAndUpdate(filter,  [{ $set: { isChecked: { $not: "$isChecked"} }}])  
   return
 }

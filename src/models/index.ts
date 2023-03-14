@@ -1,13 +1,13 @@
 import { getAllItems } from "./getAllItems";
 import { insertOneItem } from "./insertOneItem";
 import { updateOneItem } from "./updateOneItem";
-import { deleteManyItems } from "./deleteManyItems";
+import { deleteAllItems } from "./deleteAllItems";
 
 const models = {
   getAllItems,
   insertOneItem,
   updateOneItem,
-  deleteManyItems
+  deleteAllItems
 }
 
 export default models

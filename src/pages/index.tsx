@@ -12,17 +12,20 @@ import Header from './components/Header'
 import Head from 'next/head'
 import api from '@/services/api'
 import { log } from 'console'
+import { Box, Center, Image, Spinner } from '@chakra-ui/react'
+import { LoadingScreen } from './components/LoadingScreen'
 
 export default function Home() {
-
+  
   const [idList, setIdList] = useState<string[]>([])
-
+  
   const [text, setText] = useState("")
   const [isAllMatch, setIsAllMatch] = useState(false)
+  const [loadingAnimation, setLoadingAnimation] = useState(true)
 
   const queryClient = useQueryClient()
   
-  const { data: items } = useQuery<Item[]>("items", async () => {
+  const { data: items, isLoading } = useQuery<Item[]>("items", async () => {
     const response = await api.get("/items")
     return response.data
   }, {
@@ -40,6 +43,12 @@ export default function Home() {
     }
   }, [text])
 
+  useEffect(() => {
+    setTimeout(() => {
+      setLoadingAnimation(false)
+    }, 1500);
+  }, [])
+  
   const handleSubmit = async (e: any) => {
     e.preventDefault()
     if(!isAllMatch) return
@@ -57,19 +66,14 @@ export default function Home() {
     input.focus()
   }
 
+  if (isLoading || loadingAnimation) {
+    return <LoadingScreen/>
+  }
+
   return (
     <>
-      <Head>
-        <title>Lista de Compras</title>
-        <meta name="description" content="Simplifique suas idas ao mercado" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
       <DefaultContainer>
-        <Header
-          idList={idList}
-          setIdList={setIdList}
-        />
+        <Header page="main"/>
         <MessageContainer 
           items={items}
           idList={idList}

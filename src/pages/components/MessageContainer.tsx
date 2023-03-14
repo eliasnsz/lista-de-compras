@@ -15,7 +15,6 @@ const MessageContainer:FC<IProps> = ({ items, idList, setIdList }) => {
   const containerRef = useRef<HTMLDivElement>(null)
   const [isVisibleButton, setVisibleButton] = useState(false)
   
-  
   const handleScroll = (event: any) => {
     const distanceToTop = Math.abs(event.target.scrollTop as number)
     if (distanceToTop >= 400) {
@@ -39,36 +38,36 @@ const MessageContainer:FC<IProps> = ({ items, idList, setIdList }) => {
       <Stack 
         pb={3}
         px={2}
-        h="100vh" 
         w="100%"
+        h="100vh" 
         ref={containerRef}
         overflowY="scroll"
         position="relative"
         direction="column-reverse"
         onScroll={(event) => handleScroll(event)}
-        sx={{
-            "&::-webkit-scrollbar": {
-            display: "none", 
-          }
-        }}  
+        sx={{ "&::-webkit-scrollbar": { display: "none" } }}  
       > 
         {
-            items?.map((item, index) => {
-              return (
-                <Message 
-                  key={index}
-                  id={item._id.toString() as string} 
-                  idList={idList}
-                  setIdList={setIdList}
-                  created_at={item.created_at} 
-                >
-                  {`${item.quantity}${item.unit !== "un" ? item.unit : ""} ${item.name}`}                  
-                </Message>
-              )
-            }).reverse()
-          }
+          items?.map((item, index) => {
+            return (
+              <Message 
+                key={index}
+                created_at={item.created_at} 
+              >
+                {`${item.quantity}${item.unit !== "un" ? item.unit : ""} ${item.name}`}                  
+              </Message>
+            )
+          }).reverse()
+        }
       { isVisibleButton &&
-        (<Box w="100%" pb={8} pos="absolute" display="flex" justifyContent="end" px={5}>
+        (<Box
+          w="100%" 
+          pb={8} 
+          pos="absolute" 
+          display="flex" 
+          justifyContent="end" 
+          px={5}
+        >
           <IconButton
             p={2}
             size="sm"

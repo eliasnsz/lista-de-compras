@@ -5,65 +5,13 @@ import { AiOutlineArrowLeft } from "react-icons/ai"
 import { FaTrash } from "react-icons/fa"
 import api from '@/services/api'
 import { useQueryClient } from 'react-query'
+import { DotsMenu } from './DotsMenu'
 
 interface IProps {
-  idList: string[]
-  setIdList: Dispatch<React.SetStateAction<string[]>>
+  page: string
 }
 
-
-const Header:FC<IProps> = ({ idList: ids, setIdList }) => {
-
-  const queryClient = useQueryClient()
-  
-  const handleDelete = async () => {
-    await api.delete("/items", { data: ids })
-    queryClient.invalidateQueries("items")
-  }
-  
-  if (ids?.length) {
-    return (
-      <Stack 
-        px={4}
-        w="100%" 
-        zIndex={2}
-        h="75px"
-        bg="#202020" 
-        align="center"
-        direction="row"
-        justify="space-between"
-        boxShadow="0px 5px 10px #00000044"
-      >
-        <Stack
-          spacing={4}
-          align="center"
-          direction="row"
-        >
-          <Icon 
-            boxSize={5} 
-            color="#fff" 
-            transition=".2s ease"
-            as={AiOutlineArrowLeft}
-            onClick={() => setIdList([])}
-            _hover={{ cursor: "pointer", color: "#bababa" }}
-          />
-          <Text
-            color="#fff"
-          >
-            {ids.length}
-          </Text>
-        </Stack>
-        <Icon 
-          boxSize={4}
-          color="#fff"
-          as={FaTrash}
-          transition=".2s ease"
-          onClick={handleDelete}
-          _hover={{ cursor: "pointer", color: "#bababa" }}
-        />
-      </Stack>
-    )
-  }
+const Header:FC<IProps> = ({ page }) => {
   
   return (
     <Stack 
@@ -98,11 +46,7 @@ const Header:FC<IProps> = ({ idList: ids, setIdList }) => {
           Lista de compras
         </Text>
       </Stack>
-      <Icon 
-        boxSize={6}
-        color="#fff"
-        as={BiDotsVerticalRounded}
-      />
+      <DotsMenu page={page}/>
     </Stack>
   )
 }
