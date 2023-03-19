@@ -1,6 +1,7 @@
 import { Db, MongoClient } from "mongodb"
 
-const uri = process.env.MONGODB_URI as string
+const uri = process.env.MONGO_URI as string
+const databaseName = process.env.MONGO_DB as string
 
 let cachedDb: null | Db;
 
@@ -11,7 +12,8 @@ export default async function connectToDatabase() {
   }
 
   const client = new MongoClient(uri)  
-  const db = client.db("marketlist")
+  const db = client.db(databaseName)
   cachedDb = db
+  
   return db
 }
