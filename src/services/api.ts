@@ -1,8 +1,9 @@
 import axios from "axios";
 
+const appUrl = process.env.APP_URL as string
+
 const api = axios.create({
-  // baseURL: "http://localhost:3000/api/",
-  baseURL: "https://supermarket-list-rouge.vercel.app/api/",
+  baseURL: appUrl + "/api",
 })
 
 export default api
